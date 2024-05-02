@@ -1,0 +1,98 @@
+.header {
+  background-color: palette('default', 'white');
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5rem;
+  position: relative;
+  min-height: 8rem;
+
+  @include mq(tablet) {
+    min-height: 15.5rem;
+  }
+
+  &__primary-nav,
+  &__secondary-nav {
+    flex: 1;
+    display: flex;
+    min-width: -webkit-min-content; /* Workaround to Chrome bug */
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+  }
+
+  &__list-item {
+    margin-right: 2.5rem;
+    display: none;
+    color: palette('brand', 'secondary');
+    font-size: 1.1rem;
+    line-height: 1.1rem;
+    position: relative;
+    cursor: pointer;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    @include mq(tablet-wide) {
+      margin-right: 3.5rem;
+      font-size: 1.3rem;
+      line-height: 1.3rem;
+    }
+
+    &--desktop {
+      @include mq(tablet) {
+        display: block;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -.3rem;
+      left: 0;
+      height: .1rem;
+      width: 100%;
+      background-color: palette('brand', 'primary');
+      opacity: 0;
+      transition: all ease .3s;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  &__logo {
+    width: 7rem;
+    height: 4rem;
+
+    @include mq(tablet) {
+      width: 11rem;
+      height: 5.5rem;
+    }
+  }
+
+  &__secondary-nav {
+    justify-content: flex-end;
+  }
+
+  &__burgerBtn {
+    padding: 1rem;
+    cursor: pointer;
+  }
+
+  &__burger {
+    width: 2.4rem;
+    height: 2.4rem;
+
+    @include mq(tablet) {
+      width: 1.15rem;
+      height: .95rem;
+    }
+  }
+}
+

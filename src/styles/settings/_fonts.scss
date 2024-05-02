@@ -1,0 +1,14 @@
+ // Lato Regular
+@font-face {
+    font-family: 'lato-regular';
+    src: url('/assets/fonts/Lato/lato-regular.woff2?#iefix') format('woff2'),
+         url('/assets/fonts/Lato/lato-regular.woff') format('woff'),
+         url('/assets/fonts/Lato/lato-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@mixin font-primary() {
+  font-family: 'lato-regular';
+}
+
