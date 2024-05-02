@@ -7,7 +7,7 @@ function App() {
     <>
       <Header />
       <main>
-        <img src={car} alt='Intro Bentley car' />
+        <img src={car} alt='Intro Bentley car' style={{width: '100%'}} />
       </main>
     </>
   );
