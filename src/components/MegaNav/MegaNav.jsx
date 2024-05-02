@@ -1,29 +1,31 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import batur from '../../assets/images/batur.png';
 import MegaSubNav from './MegaSubNav';
 
-const MegaNav = ({ active, data }) => {
-  const [activeSubMenu, setActiveSubMenu] = useState(false);
-  const [showSubMenu, setShowSubMenu] = useState('');
-
-  const handleSubMenu = (hasSubMenu, index) => {
-    if(hasSubMenu){
-      setActiveSubMenu(((state) => !state));
-      setShowSubMenu(index);
-    }
-  };
-
+const MegaNav = ({
+  active,
+  data,
+  activeSubMenu,
+  setActiveSubMenu,
+  subItemIndex,
+  handleSubMenu,
+  burgerClicked,
+  selectedNavItem,
+}) => {
   const handleBackBtn = () => {
     setActiveSubMenu(false);
   };
 
-  // Add a class on html in order to avoid overflow
-  const htmlElement = document.body;
-  if (active) {
-    htmlElement.classList.add('megaNav-open');
+  let megaNavData;
+  // Determine which submenu items to render
+  if (active && burgerClicked) {
+    megaNavData = data;
+  } else if (!active || burgerClicked) {
+    megaNavData = [];
   } else {
-    htmlElement.classList.remove('megaNav-open');
+    // Get the data of the PrimaryNav item that was clicked
+    const selectedPrimaryNavData = data.find(item => item.label === selectedNavItem && item.isPrimaryNav);
+    megaNavData = selectedPrimaryNavData ? selectedPrimaryNavData.submenu || [] : []; [];
   }
 
   return (
@@ -32,9 +34,9 @@ const MegaNav = ({ active, data }) => {
         <div className='megaNav__menus-container'>
           <nav className='megaNav__menus'>
             <ul className='megaNav__list'>
-              {data.map((item, index) => {
+              {megaNavData.map((item, index) => {
                 const hasSubMenu = !!item.submenu;
-                const isItemIndex = showSubMenu === index;
+                const isItemIndex = subItemIndex === index;
                 return (
                   <li
                     key={index}
@@ -50,7 +52,7 @@ const MegaNav = ({ active, data }) => {
                     ): (
                       <div
                         className='megaNav__list-item-content'
-                        onClick={() => handleSubMenu(hasSubMenu, index)}>
+                        onClick={() => handleSubMenu(item, index)}>
                         {item.label}
                       </div>
                     )}
@@ -83,6 +85,12 @@ const MegaNav = ({ active, data }) => {
 MegaNav.propTypes = {
   active: PropTypes.bool,
   data: PropTypes.array,
+  activeSubMenu: PropTypes.bool,
+  setActiveSubMenu: PropTypes.func,
+  subItemIndex: PropTypes.number,
+  handleSubMenu: PropTypes.func,
+  burgerClicked: PropTypes.bool,
+  selectedNavItem: PropTypes.string,
 };
 
 export default MegaNav;

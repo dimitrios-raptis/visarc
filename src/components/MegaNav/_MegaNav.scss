@@ -122,7 +122,8 @@
     background-color: palette('default', 'white');
 
     @include mq(tablet) {
-      padding-left: 6.4rem;
+      padding-left: 7rem;
+      padding-right: 7rem;
       z-index: -1;
       height: 100dvh;
     }
