@@ -150,6 +150,8 @@
 
   &__content-img {
     object-fit: cover;
+    height: 100vh;
+    float: right;
   }
 
   &__submenu-back-btn {
