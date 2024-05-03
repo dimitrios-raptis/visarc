@@ -130,9 +130,11 @@
     }
 
     &--active-submenu {
-      opacity: 0;
+      @include mq(until-tablet) {
+        opacity: 0 !important;
+      }
 
-      @include mq(tablet) {
+      @include mq(until-tablet) {
         opacity: 1;
       }
     }
