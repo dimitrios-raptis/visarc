@@ -89,6 +89,10 @@
     position: relative;
     display: inline-block;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    padding-left: 0;
+    transition: padding-left ease .2s;
 
     &::after {
       content: '';
@@ -104,6 +108,12 @@
 
     &:hover::after {
       opacity: 1;
+    }
+
+    &--active-submenu {
+      @include mq(tablet) {
+        padding-left: 2rem;
+      }
     }
   }
 
@@ -205,6 +215,17 @@
 
     &:last-of-type {
       margin-bottom: 0;
+    }
+  }
+
+  &__subMenu-icon {
+    margin-right: 1.3rem;
+    position: absolute;
+    left: 0;
+    display: none;
+
+    @include mq(tablet) {
+      display: block;
     }
   }
 }

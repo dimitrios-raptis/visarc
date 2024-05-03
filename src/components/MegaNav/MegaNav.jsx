@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import batur from '../../assets/images/batur.png';
+import rectangle from '../../assets/images/rectangle.svg';
 import MegaSubNav from './MegaSubNav';
 
 const MegaNav = ({
@@ -51,8 +52,12 @@ const MegaNav = ({
                       </a>
                     ): (
                       <div
-                        className='megaNav__list-item-content'
-                        onClick={() => handleSubMenu(item, index)}>
+                        className={`megaNav__list-item-content ${activeSubMenu ? 'megaNav__list-item-content--active-submenu': ''}`}
+                        onClick={() => handleSubMenu(item, index)}
+                      >
+                        {activeSubMenu && (
+                          <img src={rectangle} alt='Submenu is open' className='megaNav__subMenu-icon' />
+                        )}
                         {item.label}
                       </div>
                     )}
