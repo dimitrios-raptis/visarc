@@ -7,6 +7,9 @@
 @import './settings/fonts';
 @import './settings/core';
 
+// Animations
+@import './animations/text-appear.scss';
+
 // Components
 @import '../components/Header/Header';
 @import '../components/MegaNav/MegaNav';

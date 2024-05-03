@@ -46,7 +46,7 @@ const MegaNav = ({
                     {item.link ? (
                       <a
                         href={item.link}
-                        className='megaNav__list-item-content'
+                        className={`megaNav__list-item-content ${activeSubMenu ? 'megaNav__list-item-content--active-submenu': ''}`}
                       >
                         {item.label}
                       </a>
@@ -73,7 +73,7 @@ const MegaNav = ({
                 );
               })}
             </ul>
-            <div className='megaNav__login-section'>
+            <div className={`megaNav__login-section ${activeSubMenu ? 'megaNav__login-section--active-submenu': ''}`}>
               <a href='#' className='megaNav__login-link'>Login</a>
               <a href='#' className='megaNav__login-link'>Register</a>
             </div>
