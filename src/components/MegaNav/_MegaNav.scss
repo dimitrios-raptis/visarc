@@ -111,6 +111,12 @@
       opacity: 1;
     }
 
+    &--has-submenu.megaNav__list-item-content--active-submenu {
+      @include mq(tablet) {
+        color: palette('brand', 'secondary');
+      }
+    }
+
     &--active-submenu {
       opacity: 0;
 

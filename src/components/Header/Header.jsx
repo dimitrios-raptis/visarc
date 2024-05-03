@@ -12,7 +12,9 @@ const Header = () => {
   const [activeSubMenu, setActiveSubMenu] = useState(false);
   const [subItemIndex, setSubItemIndex] = useState(null);
   const [selectedNavItem, setSelectedNavItem] = useState(null);
-  const primaryNav = filter(data, 'isPrimaryNav');
+
+  // Get the data only of the first 4 PrimaryNav items for layout safety
+  const primaryNavData = filter(data, 'isPrimaryNav').slice(0, 4);
 
   const handleBurgerClick = () => {
     setActiveMegaNav(((state) => !state));
@@ -28,8 +30,14 @@ const Header = () => {
   const handleSubMenu = (item, index) => {
     const hasSubMenu = !!item.submenu;
     if (hasSubMenu) {
-      // Togle the submenu
-      setActiveSubMenu(((state) => !state));
+      const clickedItemData = data.find((navItem) => navItem.label === item.label);
+
+      // For PrimaryNav items
+      if (clickedItemData.isPrimaryNav && window.innerWidth > 768) {
+        setActiveSubMenu(false);
+      } else {
+        setActiveSubMenu((state) => !state);
+      }
       // Get the index of the selected item
       // in order to get the relative data
       setSubItemIndex(index);
@@ -53,7 +61,7 @@ const Header = () => {
     <header className='header'>
       <nav className='header__primary-nav'>
         <ul className='header__list'>
-          {primaryNav.map((item, index) => (
+          {primaryNavData.map((item, index) => (
             <li key={index} className={`header__list-item ${item.isPrimaryNav ? 'header__list-item--desktop': ''}`}>
               {item.link ? (
                 <a

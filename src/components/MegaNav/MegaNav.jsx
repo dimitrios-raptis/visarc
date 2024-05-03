@@ -1,7 +1,13 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import batur from '../../assets/images/batur.png';
 import rectangle from '../../assets/images/rectangle.svg';
 import MegaSubNav from './MegaSubNav';
+import car1 from '../../assets/images/car1.jpg';
+import car2 from '../../assets/images/car2.jpg';
+import car3 from '../../assets/images/car3.jpg';
+
+const images = { car1, car2, car3 };
 
 const MegaNav = ({
   active,
@@ -13,6 +19,7 @@ const MegaNav = ({
   burgerClicked,
   selectedNavItem,
 }) => {
+  const [megaImage, setMegaImage] = useState(batur);
   const handleBackBtn = () => {
     setActiveSubMenu(false);
   };
@@ -29,6 +36,30 @@ const MegaNav = ({
     megaNavData = selectedPrimaryNavData ? selectedPrimaryNavData.submenu || [] : []; [];
   }
 
+  const handleImageShowing = (item) => {
+    if (item?.submenu?.img) {
+      // Get only the image name without extension
+      const imageName = item.submenu.img.split('.')[0];
+      const selectedImg = images[imageName];
+
+      if (selectedImg) {
+        setMegaImage(selectedImg);
+      } else {
+        console.error(`Image ${item.submenu.img} not found.`);
+      }
+    } else if (item?.img) {
+      // Get only the image name without extension
+      const imageName = item.img.split('.')[0];
+      const selectedImg = images[imageName];
+
+      if (selectedImg) {
+        setMegaImage(selectedImg);
+      } else {
+        console.error(`Image ${item.img} not found.`);
+      }
+    }
+  };
+
   return (
     <div className={`megaNav ${active ? 'megaNav--active': ''}`}>
       <div className='megaNav__wrapper'>
@@ -38,6 +69,7 @@ const MegaNav = ({
               {megaNavData.map((item, index) => {
                 const hasSubMenu = !!item.submenu;
                 const isItemIndex = subItemIndex === index;
+
                 return (
                   <li
                     key={index}
@@ -52,8 +84,11 @@ const MegaNav = ({
                       </a>
                     ): (
                       <div
-                        className={`megaNav__list-item-content ${activeSubMenu ? 'megaNav__list-item-content--active-submenu': ''}`}
-                        onClick={() => handleSubMenu(item, index)}
+                        className={`megaNav__list-item-content ${activeSubMenu ? 'megaNav__list-item-content--active-submenu': ''} ${hasSubMenu ? 'megaNav__list-item-content--has-submenu': ''}`}
+                        onClick={() => {
+                          handleSubMenu(item, index);
+                          handleImageShowing(item);
+                        }}
                       >
                         {activeSubMenu && (
                           <img src={rectangle} alt='Submenu is open' className='megaNav__subMenu-icon' />
@@ -80,7 +115,7 @@ const MegaNav = ({
           </nav>
         </div>
         <div className='megaNav__content'>
-          <img src={batur} alt='Mega menu Batur car image' className='megaNav__content-img' />
+          <img src={megaImage} alt='Mega menu Batur car image' className='megaNav__content-img' />
         </div>
       </div>
     </div>
