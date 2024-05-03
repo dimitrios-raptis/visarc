@@ -33,7 +33,7 @@ const Header = () => {
       setSubItemIndex(index);
     }
 
-    if (hasSubMenu && item.isPrimaryNav) {
+    if (hasSubMenu && item.isPrimaryNav && window.innerWidth > 768) {
       setActiveMegaNav(true);
       setBurgerClicked(false);
       setSelectedNavItem(item.label);

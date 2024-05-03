@@ -3,12 +3,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 5rem;
+  padding: 0 1.8rem;
   position: relative;
   min-height: 8rem;
 
   @include mq(tablet) {
     min-height: 15.5rem;
+    padding: 0 5rem;
   }
 
   &__primary-nav,

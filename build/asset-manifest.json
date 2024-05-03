@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d52265b7.css",
+    "main.js": "/static/js/main.153bff66.js",
+    "static/media/batur.png": "/static/media/batur.3e1cf8e2813d14e39825.png",
+    "static/media/logo.svg": "/static/media/logo.92b94ecbb48583b98ff13fbfb553a9eb.svg",
+    "static/media/car.jpeg": "/static/media/car.7d5c47e24f1e2a5c5827.jpeg",
+    "static/media/lato-regular.ttf": "/static/media/lato-regular.c4085f84806439816d17.ttf",
+    "static/media/lato-regular.woff": "/static/media/lato-regular.763ac76c75e07544aad6.woff",
+    "static/media/lato-regular.woff2": "/static/media/lato-regular.5b3bd11e09b4b23e1f88.woff2",
+    "static/media/close.svg": "/static/media/close.69f957f0a2840ee744aeada3d1ca778c.svg",
+    "index.html": "/index.html",
+    "static/media/burger.svg": "/static/media/burger.c7e276097542907cbf2849cef216eebe.svg",
+    "static/media/arrow-right.svg": "/static/media/arrow-right.54b8ad8cf4bdd8ab0a72701c95009262.svg",
+    "main.d52265b7.css.map": "/static/css/main.d52265b7.css.map",
+    "main.153bff66.js.map": "/static/js/main.153bff66.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d52265b7.css",
+    "static/js/main.153bff66.js"
+  ]
+}
