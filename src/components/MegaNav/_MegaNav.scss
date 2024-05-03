@@ -87,6 +87,14 @@
         display: none;
       }
     }
+
+    &--with-image-active {
+      .megaNav__list-item-content {
+        @include mq(tablet) {
+          color: rgba(palette('brand', 'primary'), .5);
+        }
+      }
+    }
   }
 
   &__list-item-content {

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import rectangle from '../../assets/images/rectangle.svg';
 import MegaSubNav from './MegaSubNav';
@@ -20,9 +21,11 @@ const MegaNav = ({
   megaImage,
   setMegaImage,
 }) => {
+  const [clickedItemIndex, setClickedItemIndex] = useState(null);
   const handleBackBtn = () => {
     setActiveSubMenu(false);
     setMegaImage(batur);
+    setClickedItemIndex(null);
   };
 
   let megaNavData;
@@ -37,7 +40,13 @@ const MegaNav = ({
     megaNavData = selectedPrimaryNavData ? selectedPrimaryNavData.submenu || [] : []; [];
   }
 
-  const handleImageShowing = (item) => {
+  const handleImageShowing = (item, index) => {
+    if (item?.submenu?.img || item?.img) {
+      setClickedItemIndex(index);
+    } else {
+      setClickedItemIndex(null);
+    }
+
     if (item?.submenu?.img) {
       // Get only the image name without extension
       const imageName = item.submenu.img.split('.')[0];
@@ -74,7 +83,7 @@ const MegaNav = ({
                 return (
                   <li
                     key={index}
-                    className={`megaNav__list-item ${item.isPrimaryNav ? 'megaNav__list-item--primary-nav-item': ''}`}
+                    className={`megaNav__list-item ${item.isPrimaryNav ? 'megaNav__list-item--primary-nav-item': ''} ${index === clickedItemIndex ? 'megaNav__list-item--with-image-active' : ''}`}
                   >
                     {item.link ? (
                       <a
@@ -88,7 +97,7 @@ const MegaNav = ({
                         className={`megaNav__list-item-content ${activeSubMenu ? 'megaNav__list-item-content--active-submenu': ''} ${hasSubMenu ? 'megaNav__list-item-content--has-submenu': ''}`}
                         onClick={() => {
                           handleSubMenu(item, index);
-                          handleImageShowing(item);
+                          handleImageShowing(item, index);
                         }}
                       >
                         {activeSubMenu && (
