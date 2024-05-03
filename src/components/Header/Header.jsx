@@ -18,8 +18,10 @@ const Header = () => {
     setActiveMegaNav(((state) => !state));
     if (activeMegaNav === false) {
       setBurgerClicked(true); // Set burgerClicked to true only when megaNav is opened
+      setActiveSubMenu(false);
     } else {
       setBurgerClicked(false); // Reset burgerClicked to false when megaNav is closed
+      setActiveSubMenu(true);
     }
   };
 
