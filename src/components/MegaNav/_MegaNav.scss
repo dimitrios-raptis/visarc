@@ -16,6 +16,10 @@
   &--active {
     bottom: 0;
     opacity: 1;
+
+    .megaNav__content-img {
+      opacity: 1;
+    }
   }
 
   &__wrapper {
@@ -170,6 +174,7 @@
 
   &__content-img {
     object-fit: cover;
+    opacity: 0;
   }
 
   &__submenu-back-btn {

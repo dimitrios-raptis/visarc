@@ -1,8 +1,7 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
-import batur from '../../assets/images/batur.png';
 import rectangle from '../../assets/images/rectangle.svg';
 import MegaSubNav from './MegaSubNav';
+import batur from '../../assets/images/batur.png';
 import car1 from '../../assets/images/car1.jpg';
 import car2 from '../../assets/images/car2.jpg';
 import car3 from '../../assets/images/car3.jpg';
@@ -18,10 +17,12 @@ const MegaNav = ({
   handleSubMenu,
   burgerClicked,
   selectedNavItem,
+  megaImage,
+  setMegaImage,
 }) => {
-  const [megaImage, setMegaImage] = useState(batur);
   const handleBackBtn = () => {
     setActiveSubMenu(false);
+    setMegaImage(batur);
   };
 
   let megaNavData;
@@ -131,6 +132,8 @@ MegaNav.propTypes = {
   handleSubMenu: PropTypes.func,
   burgerClicked: PropTypes.bool,
   selectedNavItem: PropTypes.string,
+  megaImage: PropTypes.string,
+  setMegaImage: PropTypes.func,
 };
 
 export default MegaNav;

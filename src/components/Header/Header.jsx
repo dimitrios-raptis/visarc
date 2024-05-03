@@ -5,6 +5,7 @@ import mainLogo from '../../assets/images/logo.svg';
 import burgerIcon from '../../assets/images/burger.svg';
 import closeIcon from '../../assets/images/close.svg';
 import MegaNav from '../MegaNav/MegaNav.jsx';
+import batur from '../../assets/images/batur.png';
 
 const Header = () => {
   const [activeMegaNav, setActiveMegaNav] = useState(false);
@@ -12,6 +13,7 @@ const Header = () => {
   const [activeSubMenu, setActiveSubMenu] = useState(false);
   const [subItemIndex, setSubItemIndex] = useState(null);
   const [selectedNavItem, setSelectedNavItem] = useState(null);
+  const [megaImage, setMegaImage] = useState(batur);
 
   // Get the data only of the first 4 PrimaryNav items for layout safety
   const primaryNavData = filter(data, 'isPrimaryNav').slice(0, 4);
@@ -21,6 +23,7 @@ const Header = () => {
     if (activeMegaNav === false) {
       setBurgerClicked(true); // Set burgerClicked to true only when megaNav is opened
       setActiveSubMenu(false);
+      setMegaImage(batur);
     } else {
       setBurgerClicked(false); // Reset burgerClicked to false when megaNav is closed
       setActiveSubMenu(true);
@@ -96,6 +99,8 @@ const Header = () => {
         handleSubMenu={handleSubMenu}
         burgerClicked={burgerClicked}
         selectedNavItem={selectedNavItem}
+        megaImage={megaImage}
+        setMegaImage={setMegaImage}
       />
     </header>
   );
